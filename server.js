@@ -9,18 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require("./public/assets/js/apiRoutes")(app);
+require("./public/assets/js/htmlRoutes")(app);
+
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });
 
-module.exports = function (app) {
-
-    app.get("/", function (req, res) {
-        res.sendFile(path.join(__dirname, "./index.html"));
-    });
-
-    app.get("/notes", function (req, res) {
-        res.sendFile(path.join(__dirname, "./notes.html"));
-    });
-
-}
+//var notes = [];
